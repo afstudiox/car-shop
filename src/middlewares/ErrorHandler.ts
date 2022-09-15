@@ -2,8 +2,9 @@ import { NextFunction, Request, Response } from 'express';
 
 const errors: { [errorName: string]: number } = {
   ValidationError: 400,
-  InvalidMongoId: 401,
   ZodError: 400,
+  InvalidMongoId: 400,
+  EntityNotFound: 404,
 };
 
 const errorhandlerMiddleware = (
@@ -17,10 +18,7 @@ const errorhandlerMiddleware = (
   // console.log(err.name);
   // console.log(err);
   // if (!status) return res.sendStatus(500);
-  // console.log(err.name);
-  // console.log(err.message);
-  // console.log(err);
-  res.status(status || 500).json({ message: err.message });
+  res.status(status || 500).json({ error: err.message });
 };
 
 export default errorhandlerMiddleware;
