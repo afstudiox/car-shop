@@ -20,7 +20,7 @@ export default abstract class MongoController<T> {
   }
 
   public async update(req:Request, res:Response<T | null>) {
-    const carUpdated = await this._service.update(req.params.id, req.body.body);
+    const carUpdated = await this._service.update(req.params.id, req.body);
     return res.status(200).json(carUpdated);
   }
 

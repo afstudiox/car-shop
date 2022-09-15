@@ -13,9 +13,9 @@ const errorhandlerMiddleware = (
   _next: NextFunction,
 ) => {
   const status = errors[err.name];
-  console.log(status);
-  console.log(err.name);
-  console.log(err);
+  // console.log(status);
+  // console.log(err.name);
+  // console.log(err);
   // if (!status) return res.sendStatus(500);
   // console.log(err.name);
   // console.log(err.message);
