@@ -5,7 +5,7 @@ import MongoModel from './MongoModel';
 const carMongooseSchema = new Schema<ICar>({
   status: Boolean || undefined,
   model: String,
-  year: Boolean,
+  year: Number,
   color: String,
   buyValue: Number,
   doorsQty: Number,

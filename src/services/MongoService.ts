@@ -1,14 +1,15 @@
+import { ICarZodSchema } from '../interfaces/ICar';
 import { IModel } from '../interfaces/IModel';
 import { IService } from '../interfaces/IService';
 
 abstract class MongoService<T> implements IService<T> {
-  protected _model:IModel<T>;
-
-  constructor(model:IModel<T>) {
-    this._model = model;
-  }
+  constructor(protected _model:IModel<T>, protected _zodSchema = ICarZodSchema) { }
   
   public async create(obj:T):Promise<T> {
+    const parse = this._zodSchema.safeParse(obj);
+    if (!parse.success) {
+      throw parse.error;
+    }
     const created = await this._model.create(obj);
     return created;
   }
