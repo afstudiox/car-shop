@@ -38,4 +38,14 @@ const carMockForUpdate: ICar = {
   doorsQty: 2,
 }
 
-export { carMockForUpdate, carMockUpdatedWithId, carMockWithId, carMock };
+const carMockInvalid: ICar & {invalid: true }= {
+  model: 'Fiat Uno',
+  year: 1993,
+  color: 'white',
+  buyValue: 5500,
+  seatsQty: 2,
+  doorsQty: 2,
+  invalid: true
+}
+
+export { carMockInvalid, carMockForUpdate, carMockUpdatedWithId, carMockWithId, carMock };
